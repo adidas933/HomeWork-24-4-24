@@ -1,12 +1,11 @@
-import Card from '@mui/material/Card';
-import { Counter } from '../../components/features/Counters/Counters';
+import { Counters } from '../../components/features/Counters/Counters';
+import { CreateCounter } from '../../components/features/Counters/CreateCounter';
 
 export const Homepage = () => {
   return (
     <div>
-      <Card>
-        <Counter />
-      </Card>
+        <Counters />
+        <CreateCounter />
     </div>
   );
 };

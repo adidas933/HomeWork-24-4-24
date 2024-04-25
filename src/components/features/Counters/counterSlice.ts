@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Counter {
+export interface Counter {
   name: string;
   count: number;
 }
@@ -9,10 +9,15 @@ export interface CounterState {
   counters: Counter[];
 }
 
-const initialState: CounterState = {
+let initialState: CounterState = {
   counters: [],
 };
 
+if (localStorage['counters']) {
+  initialState = {
+    counters: JSON.parse(localStorage['counters']),
+  };
+}
 export const counterSlice = createSlice({
   name: 'counter',
   initialState,
@@ -22,6 +27,7 @@ export const counterSlice = createSlice({
         name: action.payload,
         count: 0,
       });
+      localStorage['counters'] = JSON.stringify(state.counters);
     },
     increment: (state, action: PayloadAction<string>) => {
       state.counters.forEach((counter) => {
@@ -29,6 +35,7 @@ export const counterSlice = createSlice({
           counter.count++;
         }
       });
+      localStorage['counters'] = JSON.stringify(state.counters);
     },
     decrement: (state, action: PayloadAction<string>) => {
       state.counters.forEach((counter) => {
@@ -36,6 +43,7 @@ export const counterSlice = createSlice({
           counter.count--;
         }
       });
+      localStorage['counters'] = JSON.stringify(state.counters);
     },
   },
 });
