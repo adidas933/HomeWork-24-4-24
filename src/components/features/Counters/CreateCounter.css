@@ -1,0 +1,13 @@
+.inputCreateCounter {
+  font-size: 25px;
+}
+
+.fabButtonAdd {
+  top: -5px;
+  right: -5px;
+}
+
+.fabButtonAdd:hover {
+  background-color: rgb(238, 132, 195) !important
+
+}

@@ -4,8 +4,8 @@ import { CreateCounter } from '../../components/features/Counters/CreateCounter'
 export const Homepage = () => {
   return (
     <div>
-        <Counters />
         <CreateCounter />
+        <Counters />
     </div>
   );
 };

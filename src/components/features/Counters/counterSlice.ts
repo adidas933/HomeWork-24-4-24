@@ -18,6 +18,7 @@ if (localStorage['counters']) {
     counters: JSON.parse(localStorage['counters']),
   };
 }
+
 export const counterSlice = createSlice({
   name: 'counter',
   initialState,
@@ -45,9 +46,13 @@ export const counterSlice = createSlice({
       });
       localStorage['counters'] = JSON.stringify(state.counters);
     },
+    removeCounter: (state, action: PayloadAction<string>) => {
+      state.counters = state.counters.filter((counter) => counter.name !== action.payload);
+      localStorage['counters'] = JSON.stringify(state.counters);
+    },
   },
 });
 
-export const { addCounter, increment, decrement } = counterSlice.actions;
+export const { addCounter, increment, decrement, removeCounter } = counterSlice.actions;
 
 export default counterSlice.reducer;
